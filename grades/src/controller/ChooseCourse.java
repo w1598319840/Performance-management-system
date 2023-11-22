@@ -24,7 +24,7 @@ import javax.swing.JTextField;
 
 public class ChooseCourse extends JFrame implements ActionListener {
 	/**
-	 * Ñ§ÉúÑ¡¿Î
+	 * å­¦ç”Ÿé€‰è¯¾
 	 */
 	private static final long serialVersionUID = 1L;
 	JPanel contain;
@@ -35,14 +35,14 @@ public class ChooseCourse extends JFrame implements ActionListener {
 	String id;
 
 	public ChooseCourse(String id) {
-		super("Ñ¡¿Î½çÃæ");
+		super("é€‰è¯¾ç•Œé¢");
 		this.id = id;
 		contain = new JPanel();
 		contain.setLayout(null);
 		setLocation(600, 200);
 		setSize(650, 450);
 		add(contain);
-		allCourse = new JLabel("ËùÓĞ¿ÉÑ¡¿Î³Ì:");
+		allCourse = new JLabel("æ‰€æœ‰å¯é€‰è¯¾ç¨‹:");
 		allCourse.setBounds(10, 10, 200, 20);
 		contain.add(allCourse);
 		list = new JTextArea();
@@ -53,7 +53,7 @@ public class ChooseCourse extends JFrame implements ActionListener {
 		scrollPane.setViewportView(list);
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		contain.add(scrollPane);
-		list.append("¿Î³Ì±àºÅ\t¿Î³ÌÃû\t\tÑ§·Ö\tÑ§Ê±\t½ÌÊ¦\tÒÑÑ¡ÈËÊı/×î´óÈËÊı\n");
+		list.append("è¯¾ç¨‹ç¼–å·\tè¯¾ç¨‹å\t\tå­¦åˆ†\tå­¦æ—¶\tæ•™å¸ˆ\tå·²é€‰äººæ•°/æœ€å¤§äººæ•°\n");
 		String courseId;
 		String courseName;
 		String credit = null;
@@ -68,7 +68,7 @@ public class ChooseCourse extends JFrame implements ActionListener {
 		try {
 
 			br = new BufferedReader(new FileReader(path));
-			while ((s = br.readLine()) != null) {// Ê¹ÓÃreadLine·½·¨£¬Ò»´Î¶ÁÒ»ĞĞ
+			while ((s = br.readLine()) != null) {// ä½¿ç”¨readLineæ–¹æ³•ï¼Œä¸€æ¬¡è¯»ä¸€è¡Œ
 				String[] result = s.split(" ");
 				courseId = result[0];
 				courseName = result[1];
@@ -110,7 +110,7 @@ public class ChooseCourse extends JFrame implements ActionListener {
 			}
 		}
 
-		chooseCourseId = new JLabel("ÏëÒªÑ¡¿Î/ÍËÑ¡µÄ¿Î³Ì±àºÅ£º");
+		chooseCourseId = new JLabel("æƒ³è¦é€‰è¯¾/é€€é€‰çš„è¯¾ç¨‹ç¼–å·ï¼š");
 		chooseCourseIdt = new JTextField();
 
 		chooseCourseId.setBounds(70, 280, 160, 35);
@@ -119,8 +119,8 @@ public class ChooseCourse extends JFrame implements ActionListener {
 		contain.add(chooseCourseId);
 		contain.add(chooseCourseIdt);
 
-		submit = new JButton("Ñ¡¿Î");
-		dropOut = new JButton("ÍËÑ¡");
+		submit = new JButton("é€‰è¯¾");
+		dropOut = new JButton("é€€é€‰");
 		submit.setBounds(180, 350, 100, 30);
 		submit.addActionListener(this);
 		dropOut.setBounds(320, 350, 100, 30);
@@ -134,18 +134,18 @@ public class ChooseCourse extends JFrame implements ActionListener {
 
 	public boolean hasStudent(String id, String courseId) {
 		String path = System.getProperty("user.dir") + "/data/course_student";
-		List<String> files = new ArrayList<String>();// »ñÈ¡Ä¿Â¼ÏÂËùÓĞÎÄ¼ş
-		File file = new File(path);// ÖÁcourse_studentÎÄ¼ş¼Ğ
-		File[] tempList = file.listFiles();// Õâ¸öÊı×éÖĞÓĞ¸ÃÄ¿Â¼ÏÂËùÓĞÎÄ¼ş
+		List<String> files = new ArrayList<String>();// è·å–ç›®å½•ä¸‹æ‰€æœ‰æ–‡ä»¶
+		File file = new File(path);// è‡³course_studentæ–‡ä»¶å¤¹
+		File[] tempList = file.listFiles();// è¿™ä¸ªæ•°ç»„ä¸­æœ‰è¯¥ç›®å½•ä¸‹æ‰€æœ‰æ–‡ä»¶
 		for (int i = 0; i < tempList.length; i++) {
 			if (tempList[i].isFile()) {
 				files.add(tempList[i].toString());
-				// ÎÄ¼şÃû£¬²»°üº¬Â·¾¶
+				// æ–‡ä»¶åï¼Œä¸åŒ…å«è·¯å¾„
 			}
 			if (tempList[i].isDirectory()) {
-				// ÕâÀï¾Í²»µİ¹éÁË£¬
+				// è¿™é‡Œå°±ä¸é€’å½’äº†ï¼Œ
 			}
-		} // forÑ­»·ºó£¬files¶¯Ì¬Êı×éÖĞ¾Í°üÀ¨ÁËËùÓĞµÄÎÄ¼şÂ·¾¶
+		} // forå¾ªç¯åï¼ŒfilesåŠ¨æ€æ•°ç»„ä¸­å°±åŒ…æ‹¬äº†æ‰€æœ‰çš„æ–‡ä»¶è·¯å¾„
 		BufferedReader br = null;
 		try {
 			for (int i = 0; i < files.size(); i++) {
@@ -155,7 +155,7 @@ public class ChooseCourse extends JFrame implements ActionListener {
 					String[] result = s.split(" ");
 					if (result[0].equals(courseId)) {
 						if (result[2].equals(id)) {
-							return true;// ÓĞÕâ¸öÑ§Éú·µ»Øtrue
+							return true;// æœ‰è¿™ä¸ªå­¦ç”Ÿè¿”å›true
 						}
 					}
 				}
@@ -169,27 +169,27 @@ public class ChooseCourse extends JFrame implements ActionListener {
 				e.printStackTrace();
 			}
 		}
-		return false;// ÕÒ²»µ½Õâ¸öÑ§Éú·µ»Øfalse
+		return false;// æ‰¾ä¸åˆ°è¿™ä¸ªå­¦ç”Ÿè¿”å›false
 	}
 
 	public void editCurrentNum(String courseId, boolean condition) {
-		// condtionÓÃÀ´ÅĞ¶ÏÊÇµ±Ç°ÈËÊı +1(true) »¹ÊÇµ±Ç°ÈËÊı -1(false)
+		// condtionç”¨æ¥åˆ¤æ–­æ˜¯å½“å‰äººæ•° +1(true) è¿˜æ˜¯å½“å‰äººæ•° -1(false)
 		String coursePath = System.getProperty("user.dir") + "\\data\\course.txt";
 		ArrayList<String> modifiedContent = new ArrayList<String>();
-		BufferedReader br = null;// ÓÃÀ´ÔÙ´Î¶ÁÈë¿Î³ÌµÄÊı¾İ£¬Õâ´ÎÊÇÎªÁËĞŞ¸ÄÆäÖĞµÄcurrentNum
-		BufferedWriter bw = null;// ÓÃÀ´°ÑÊı¾İÖØĞÂĞ´Èë£¬ÔÚ¶ÁÈë¶Á³öµÄ¹ı³ÌÖ®ÖĞ£¬currentNumµÃµ½ÁËĞŞ¸Ä
+		BufferedReader br = null;// ç”¨æ¥å†æ¬¡è¯»å…¥è¯¾ç¨‹çš„æ•°æ®ï¼Œè¿™æ¬¡æ˜¯ä¸ºäº†ä¿®æ”¹å…¶ä¸­çš„currentNum
+		BufferedWriter bw = null;// ç”¨æ¥æŠŠæ•°æ®é‡æ–°å†™å…¥ï¼Œåœ¨è¯»å…¥è¯»å‡ºçš„è¿‡ç¨‹ä¹‹ä¸­ï¼ŒcurrentNumå¾—åˆ°äº†ä¿®æ”¹
 		try {
 			br = new BufferedReader(new FileReader(coursePath));
 			String s = null;
 			while ((s = br.readLine()) != null) {
-				String[] result = s.split(" ");// °ÑÔ­À´µÄĞÅÏ¢´æÆğÀ´
+				String[] result = s.split(" ");// æŠŠåŸæ¥çš„ä¿¡æ¯å­˜èµ·æ¥
 				if (result[0].equals(courseId)) {
 					if (condition) {
 						result[7] = "" + (Integer.parseInt(result[7]) + 1);
 					} else {
 						result[7] = "" + (Integer.parseInt(result[7]) - 1);
 					}
-				} // ÕÒµ½ÁËÕâÃÅ¿Î£¬¾Í°ÑÕâÃÅ¿ÎµÄcurrentNum + 1
+				} // æ‰¾åˆ°äº†è¿™é—¨è¯¾ï¼Œå°±æŠŠè¿™é—¨è¯¾çš„currentNum + 1
 				String s1 = "";
 				for (int i = 0; i < result.length - 1; i++) {
 					s1 = s1 + result[i];
@@ -227,13 +227,13 @@ public class ChooseCourse extends JFrame implements ActionListener {
 	void addGrade(String courseId, String studentId) {
 		String coursePath = System.getProperty("user.dir") + "\\data\\course.txt";
 		String studentPath = System.getProperty("user.dir") + "\\data\\student.txt";
-		BufferedReader br1 = null;// ÓÃÀ´¶ÁÈ¡¿Î³ÌĞÅÏ¢
-		BufferedReader br2 = null;// ÓÃÀ´¶ÁÈ¡Ñ§ÉúĞÅÏ¢
+		BufferedReader br1 = null;// ç”¨æ¥è¯»å–è¯¾ç¨‹ä¿¡æ¯
+		BufferedReader br2 = null;// ç”¨æ¥è¯»å–å­¦ç”Ÿä¿¡æ¯
 		BufferedWriter bw = null;
 		String s = null;
-		String courseName = null;// ¶ÔÓ¦¿Î³Ì±àºÅµÄ¿Î³ÌÃû
-		String teacherId = null;// ¶ÔÓ¦µÄÀÏÊ¦±àºÅ
-		String teacherName = null;// ¶ÔÓ¦µÄÀÏÊ¦ĞÕÃû
+		String courseName = null;// å¯¹åº”è¯¾ç¨‹ç¼–å·çš„è¯¾ç¨‹å
+		String teacherId = null;// å¯¹åº”çš„è€å¸ˆç¼–å·
+		String teacherName = null;// å¯¹åº”çš„è€å¸ˆå§“å
 		String studentName = null;
 		try {
 			br1 = new BufferedReader(new FileReader(coursePath));
@@ -252,12 +252,12 @@ public class ChooseCourse extends JFrame implements ActionListener {
 					studentName = result[2];
 				}
 			}
-			String gradePath = System.getProperty("user.dir") + "\\data\\grade\\" + courseName + ".txt";// ÕÒµ½¶ÔÓ¦¿Î³ÌµÄ³É¼¨ÎÄ¼ş
-			bw = new BufferedWriter(new FileWriter(gradePath));
-			// ¿Î³Ì±àºÅ ¿Î³ÌÃû³Æ ÀÏÊ¦±àºÅ ÀÏÊ¦ĞÕÃû Ñ§ÉúÑ§ºÅ Ñ§ÉúĞÕÃû ³É¼¨
-			// courseId courseName teacherId teacherName studentId studentName ÔİÎ´ÎŞ¿¼ÊÔ¼ÇÂ¼
+			String gradePath = System.getProperty("user.dir") + "\\data\\grade\\" + courseName + ".txt";// æ‰¾åˆ°å¯¹åº”è¯¾ç¨‹çš„æˆç»©æ–‡ä»¶
+			bw = new BufferedWriter(new FileWriter(gradePathï¼Œtrue));
+			// è¯¾ç¨‹ç¼–å· è¯¾ç¨‹åç§° è€å¸ˆç¼–å· è€å¸ˆå§“å å­¦ç”Ÿå­¦å· å­¦ç”Ÿå§“å æˆç»©
+			// courseId courseName teacherId teacherName studentId studentName æš‚æœªæ— è€ƒè¯•è®°å½•
 			bw.write(courseId + " " + courseName + " " + teacherId + " " + teacherName + " " + studentId + " "
-					+ studentName + " " + "ÔİÎŞ¿¼ÊÔ¼ÇÂ¼");
+					+ studentName + " " + "æš‚æ— è€ƒè¯•è®°å½•");
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
@@ -272,49 +272,49 @@ public class ChooseCourse extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == submit) {// ÅĞ¶ÏÌá½»°´Å¥ÊÇ·ñ°´ÏÂ
-			if (chooseCourseIdt.getText().equals("")) {// ÅĞ¶ÏÑ¡¿Î¿òÄÚÈİÊÇ·ñÎª¿Õ
-				JOptionPane.showMessageDialog(null, "Ñ¡¿ÎµÄ±àºÅ²»ÄÜÎª¿Õ£¡", "ÌáÊ¾", JOptionPane.INFORMATION_MESSAGE);
+		if (e.getSource() == submit) {// åˆ¤æ–­æäº¤æŒ‰é’®æ˜¯å¦æŒ‰ä¸‹
+			if (chooseCourseIdt.getText().equals("")) {// åˆ¤æ–­é€‰è¯¾æ¡†å†…å®¹æ˜¯å¦ä¸ºç©º
+				JOptionPane.showMessageDialog(null, "é€‰è¯¾çš„ç¼–å·ä¸èƒ½ä¸ºç©ºï¼", "æç¤º", JOptionPane.INFORMATION_MESSAGE);
 			} else {
-				if (hasStudent(id, chooseCourseIdt.getText())) {// ÅĞ¶ÏÕâ¸öÑ§ÉúÊÇ·ñÑ¡¹ıÕâÃÅ¿Î
-					JOptionPane.showMessageDialog(null, "ÄúÒÑ¼ÓÈë¹ı´Ë¿Î³Ì£¬ÇëÎğÖØ¸´Ñ¡¿Î£¡", "ÌáÊ¾", JOptionPane.INFORMATION_MESSAGE);
+				if (hasStudent(id, chooseCourseIdt.getText())) {// åˆ¤æ–­è¿™ä¸ªå­¦ç”Ÿæ˜¯å¦é€‰è¿‡è¿™é—¨è¯¾
+					JOptionPane.showMessageDialog(null, "æ‚¨å·²åŠ å…¥è¿‡æ­¤è¯¾ç¨‹ï¼Œè¯·å‹¿é‡å¤é€‰è¯¾ï¼", "æç¤º", JOptionPane.INFORMATION_MESSAGE);
 					chooseCourseIdt.setText("");
 				} else {
 					String coursePath = System.getProperty("user.dir") + "/data/course.txt";
 					String studentPath = System.getProperty("user.dir") + "/data/student.txt";
-					BufferedReader br1 = null;// ÓÃÀ´¶ÁÈë¿Î³ÌµÄÊı¾İ
-					BufferedReader br2 = null;// ÓÃÀ´¶ÁÈëÑ§ÉúµÄÊı¾İ
-					BufferedWriter bw = null;// ÓÃÀ´Ğ´course_student
+					BufferedReader br1 = null;// ç”¨æ¥è¯»å…¥è¯¾ç¨‹çš„æ•°æ®
+					BufferedReader br2 = null;// ç”¨æ¥è¯»å…¥å­¦ç”Ÿçš„æ•°æ®
+					BufferedWriter bw = null;// ç”¨æ¥å†™course_student
 					String[] result2 = null;
-					boolean flag = false;// ÓÃÀ´±ê¼ÇÕâÃÅ¿Î´æ²»´æÔÚ
+					boolean flag = false;// ç”¨æ¥æ ‡è®°è¿™é—¨è¯¾å­˜ä¸å­˜åœ¨
 					try {
 						br1 = new BufferedReader(new FileReader(coursePath));
 						br2 = new BufferedReader(new FileReader(studentPath));
-						String s1 = null;// ÓÃÀ´¼ÇÂ¼¿Î³ÌĞÅÏ¢
-						String s2 = null;// ÓÃÀ´¼ÇÂ¼Ñ§ÉúĞÅÏ¢
+						String s1 = null;// ç”¨æ¥è®°å½•è¯¾ç¨‹ä¿¡æ¯
+						String s2 = null;// ç”¨æ¥è®°å½•å­¦ç”Ÿä¿¡æ¯
 						while ((s2 = br2.readLine()) != null) {
-							result2 = s2.split(" ");// ÓÃÀ´¼ÇÂ¼Ñ§ÉúĞÅÏ¢
+							result2 = s2.split(" ");// ç”¨æ¥è®°å½•å­¦ç”Ÿä¿¡æ¯
 							if (result2[0].equals(id)) {
 								break;
 							}
 						}
 						while ((s1 = br1.readLine()) != null) {
-							String[] result1 = s1.split(" ");// ÓÃÀ´¼ÇÂ¼¿Î³ÌĞÅÏ¢
-							if (result1[0].equals(chooseCourseIdt.getText())) {// ÕÒµ½ÁËÒª¼ÓÈëµÄÄÇÃÅ¿Î
+							String[] result1 = s1.split(" ");// ç”¨æ¥è®°å½•è¯¾ç¨‹ä¿¡æ¯
+							if (result1[0].equals(chooseCourseIdt.getText())) {// æ‰¾åˆ°äº†è¦åŠ å…¥çš„é‚£é—¨è¯¾
 								flag = true;
 								String course_studentPath = System.getProperty("user.dir") + "/data/course_student/"
-										+ result1[1] + "_student.txt";// ´´½¨Òª¼ÓÈë¿Î³ÌµÄÑ§ÉúÃûµ¥µÄÂ·¾¶
-								bw = new BufferedWriter(new FileWriter(course_studentPath));
-								if (Integer.parseInt(result1[7]) >= Integer.parseInt(result1[6])) {// ÅĞ¶Ï¿Î³ÌÈËÊıÊÇ·ñÒÑÂú
-									JOptionPane.showMessageDialog(null, "±§Ç¸£¬¸Ã¿Î³ÌÈËÊıÒÑ´ïÉÏÏŞ£¡", "ÌáÊ¾",
+										+ result1[1] + "_student.txt";// åˆ›å»ºè¦åŠ å…¥è¯¾ç¨‹çš„å­¦ç”Ÿåå•çš„è·¯å¾„
+								bw = new BufferedWriter(new FileWriter(course_studentPath,true));
+								if (Integer.parseInt(result1[7]) >= Integer.parseInt(result1[6])) {// åˆ¤æ–­è¯¾ç¨‹äººæ•°æ˜¯å¦å·²æ»¡
+									JOptionPane.showMessageDialog(null, "æŠ±æ­‰ï¼Œè¯¥è¯¾ç¨‹äººæ•°å·²è¾¾ä¸Šé™ï¼", "æç¤º",
 											JOptionPane.INFORMATION_MESSAGE);
 									break;
 								} else {
 									bw.write(result1[0] + " " + result1[1] + " " + result2[0] + " " + result2[2] + " "
 											+ result2[3] + " " + result2[4] + " " + result2[5] + " " + result2[6]);
 									editCurrentNum(chooseCourseIdt.getText(), true);
-									addGrade(chooseCourseIdt.getText(), id);// Ñ¡Íê¿ÎÒÔºó£¬ĞèÒªÌí¼ÓÏàÓ¦µÄ³É¼¨ÎÄ¼şÄÚÈİ
-									JOptionPane.showMessageDialog(null, "Ñ¡¿Î " + result1[1] + " ³É¹¦!", "ÌáÊ¾",
+									addGrade(chooseCourseIdt.getText(), id);// é€‰å®Œè¯¾ä»¥åï¼Œéœ€è¦æ·»åŠ ç›¸åº”çš„æˆç»©æ–‡ä»¶å†…å®¹
+									JOptionPane.showMessageDialog(null, "é€‰è¯¾ " + result1[1] + " æˆåŠŸ!", "æç¤º",
 											JOptionPane.INFORMATION_MESSAGE);
 									chooseCourseIdt.setText("");
 									bw.close();
@@ -322,7 +322,7 @@ public class ChooseCourse extends JFrame implements ActionListener {
 							}
 						}
 						if (!(flag)) {
-							JOptionPane.showMessageDialog(null, "±§Ç¸£¬¸Ã¿Î³Ì²»´æÔÚ£¬ÇëÖØĞÂÑ¡Ôñ¡£", "ÌáÊ¾",
+							JOptionPane.showMessageDialog(null, "æŠ±æ­‰ï¼Œè¯¥è¯¾ç¨‹ä¸å­˜åœ¨ï¼Œè¯·é‡æ–°é€‰æ‹©ã€‚", "æç¤º",
 									JOptionPane.INFORMATION_MESSAGE);
 							chooseCourseIdt.setText("");
 							return;
@@ -342,18 +342,18 @@ public class ChooseCourse extends JFrame implements ActionListener {
 			}
 		}
 		if (e.getSource() == dropOut) {
-			if (chooseCourseIdt.getText().equals("")) {// ÅĞ¶ÏÑ¡¿Î¿òÄÚÈİÊÇ·ñÎª¿Õ
-				JOptionPane.showMessageDialog(null, "ÍË¿ÎµÄ±àºÅ²»ÄÜÎª¿Õ£¡", "ÌáÊ¾", JOptionPane.INFORMATION_MESSAGE);
+			if (chooseCourseIdt.getText().equals("")) {// åˆ¤æ–­é€‰è¯¾æ¡†å†…å®¹æ˜¯å¦ä¸ºç©º
+				JOptionPane.showMessageDialog(null, "é€€è¯¾çš„ç¼–å·ä¸èƒ½ä¸ºç©ºï¼", "æç¤º", JOptionPane.INFORMATION_MESSAGE);
 			} else {
-				if (!(hasStudent(id, chooseCourseIdt.getText()))) {// ÅĞ¶ÏÕâÃÅ¿ÎÖĞÓĞÃ»ÓĞÕâ¸öÑ§Éú
-					JOptionPane.showMessageDialog(null, "Äú»¹Î´¼ÓÈëÕâÃÅ¿Î³Ì/ÕâÃÅ¿Î³Ì²»´æÔÚ£¬ÎŞ·¨ÍË¿Î£¡", "ÌáÊ¾",
+				if (!(hasStudent(id, chooseCourseIdt.getText()))) {// åˆ¤æ–­è¿™é—¨è¯¾ä¸­æœ‰æ²¡æœ‰è¿™ä¸ªå­¦ç”Ÿ
+					JOptionPane.showMessageDialog(null, "æ‚¨è¿˜æœªåŠ å…¥è¿™é—¨è¯¾ç¨‹/è¿™é—¨è¯¾ç¨‹ä¸å­˜åœ¨ï¼Œæ— æ³•é€€è¯¾ï¼", "æç¤º",
 							JOptionPane.INFORMATION_MESSAGE);
 					chooseCourseIdt.setText("");
 				} else {
 					String coursePath = System.getProperty("user.dir") + "/data/course.txt";
-					BufferedReader br1 = null;// br1ÓÃÀ´»ñÈ¡course.txtÎÄ¼şµÄÂ·¾¶
-					BufferedReader br2 = null;// br2ÓÃÀ´¶ÁÈ¡¶ÔÓ¦µÄcourse_studentÎÄ¼şÖĞµÄÄÚÈİ
-					BufferedWriter bw = null;// bwÓÃÀ´½«É¾¼õºóµÄÄÚÈİÖØĞÂĞ´Èë
+					BufferedReader br1 = null;// br1ç”¨æ¥è·å–course.txtæ–‡ä»¶çš„è·¯å¾„
+					BufferedReader br2 = null;// br2ç”¨æ¥è¯»å–å¯¹åº”çš„course_studentæ–‡ä»¶ä¸­çš„å†…å®¹
+					BufferedWriter bw = null;// bwç”¨æ¥å°†åˆ å‡åçš„å†…å®¹é‡æ–°å†™å…¥
 					ArrayList<String> modifiedContent = new ArrayList<String>();
 					String course_studentPath = null;
 					String[] result1 = null;
@@ -364,7 +364,7 @@ public class ChooseCourse extends JFrame implements ActionListener {
 							result1 = s1.split(" ");
 							if (result1[0].equals(chooseCourseIdt.getText())) {
 								course_studentPath = System.getProperty("user.dir") + "/data/course_student/"
-										+ result1[1] + "_student.txt";// ´´½¨Òª¼ÓÈë¿Î³ÌµÄÑ§ÉúÃûµ¥µÄÂ·¾¶
+										+ result1[1] + "_student.txt";// åˆ›å»ºè¦åŠ å…¥è¯¾ç¨‹çš„å­¦ç”Ÿåå•çš„è·¯å¾„
 								break;
 							}
 						}
@@ -399,7 +399,7 @@ public class ChooseCourse extends JFrame implements ActionListener {
 							bw.write(modifiedContent.get(i));
 							bw.newLine();
 						}
-						JOptionPane.showMessageDialog(null, "ÍË¿Î " + result1[1] + " ³É¹¦!", "ÌáÊ¾",
+						JOptionPane.showMessageDialog(null, "é€€è¯¾ " + result1[1] + " æˆåŠŸ!", "æç¤º",
 								JOptionPane.INFORMATION_MESSAGE);
 					} catch (IOException e1) {
 						e1.printStackTrace();

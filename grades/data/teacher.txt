@@ -1,2 +1,0 @@
-t 123456 Tom male 2020.1.1 computer software
-a 123456 Siri male 2004.1.3 computer software

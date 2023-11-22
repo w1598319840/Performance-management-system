@@ -1,0 +1,798 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1.0">
+  <zoom_level>3</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>318</x>
+      <y>102</y>
+      <w>258</w>
+      <h>231</h>
+    </coordinates>
+    <panel_attributes>model::Course
+--
+-courseId: String
+-courseName: String
+-teacherId: String
+-teacherName: String
+-credit: String
+-hour: String
+-maxNum: String
+-currentNum = "0": String
+-fail, pass, good, excellent: float
+--
++Course(String courseId, float pass, float good, float excellent): ctor
++Course(String courseId, String courseName, String teacherId, String teacherName, String credit, String hour, String maxNum): ctor
++Course(String courseId, String courseName, String teacherId, String teacherName, float fial, float pass, float good, float excellent): ctor
++getCourseId(): String
++setCourseId(String courseId): void
++getCourseName(): String
++setCourseName(String courseName): void
++getTeacherId(): String
++setTeacherId(String teacherId): void
++getTeacherName(): String
++setTeacherName(String teacherName): void
++getFial(): float
++setFial(float fial): void
++getPass(): float
++setPass(float pass): void
++getGood(): float
++setGood(float good): void
++getExcellent(): float
++setExcellent(float excellent): void
++getCredit(): String
++setCredit(String credit): void
++getHour(): String
++getMaxNum(): String
++setMaxNum(String maxNum): void
++getCurrentNum(): String
++setCurrentNum(String currentNum): void
++setHour(String hour): void
++getFail(): float
++setFail(float fail): void
++hasCourse(): int
++sortGrade(): int[]
++isValidate(): // 输入的成绩标准是否是在正常内[0, 100],以及pass&lt;good&lt;excellent&#13;
+int
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>612</x>
+      <y>105</y>
+      <w>177</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>model::Scholarship
+--
+-id: String
+-name: String
+-inst: String
+-major: String
+-type: String
+-reason: String
+--
++Scholarship(): ctor
++Scholarship(String id, String name, String inst, String major, String type, String reason): ctor
++getId(): String
++setId(String id): void
++getName(): String
++setName(String name): void
++getInst(): String
++setInst(String inst): void
++getMajor(): String
++setMajor(String major): void
++getType(): String
++setType(String type): void
++getReason(): String
++setReason(String reason): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>807</x>
+      <y>123</y>
+      <w>96</w>
+      <h>105</h>
+    </coordinates>
+    <panel_attributes>controller::GradeEnter
+--
+~idd: String
+~contain: JPanel
+~id, allCourse: JLabel
+~idt, stuIdt, stuGradet, stuNamet: JTextField
+~list: JTextArea
+~listPane: JScrollPane
+~targetFile: String
+~submit, bn, overview: JButton
+--
++GradeEnter(String idd): ctor
++actionPerformed(ActionEvent e): void
+~hasThisStu(): int
+~enter(): void
+~hasThisCourse(String idd): int
++processWindowEvent(WindowEvent e): void
+~allStudent(// 获取本门课程的所有学生信息&#13;
+String courseId): // 获取本门课程的所有学生信息&#13;
+void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>921</x>
+      <y>126</y>
+      <w>138</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>controller::ExamEnter
+--
+~idd: String
+~contain: JPanel
+~id: JLabel
+~idt, stuIdt, stuNamet, examNamet, examTimet, examAreat: JTextField
+~targetFile: String
+~submit, bn, overview: JButton
+~modifiedContent = new ArrayList&lt;String&gt;(): ArrayList&lt;String&gt;
+--
++ExamEnter(String idd): ctor
++actionPerformed(ActionEvent e): void
+~hasThisStu(): int
+~enter(): void
+~hasThisCourse(String idd): int
+~allStudent(// 获取本门课程的所有学生信息&#13;
+String courseId): // 获取本门课程的所有学生信息&#13;
+void
++processWindowEvent(WindowEvent e): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1074</x>
+      <y>120</y>
+      <w>57</w>
+      <h>87</h>
+    </coordinates>
+    <panel_attributes>controller::ExamInfo
+--
+-serialVersionUID = 1L: long
+~contain: JPanel
+~list: JTextArea
+~id: String
+~courseid: String
+~coursename: String
+~teacherid: String
+~teachername: String
+~studentid: String
+~studentname: String
+~Examname: String
+~Examtime: String
+~Examarea: String
+--
++ExamInfo(String id): ctor
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>606</x>
+      <y>240</y>
+      <w>213</w>
+      <h>87</h>
+    </coordinates>
+    <panel_attributes>model::Administrator
+--
+-sex: String
+-birthday: String
+-institute: String
+-major: String
+--
++Administrator(): ctor
++Administrator(String id, String pwd, String name, String sex, String birthday, String institute, String major): ctor
++getSex(): String
++setSex(String sex): void
++getBirthday(): String
++setBirthday(String birthday): void
++getInstitute(): String
++setInstitute(String institute): void
++getMajor(): String
++setMajor(String major): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>846</x>
+      <y>237</y>
+      <w>201</w>
+      <h>87</h>
+    </coordinates>
+    <panel_attributes>model::Student
+--
+-sex: String
+-birthday: String
+-institute: String
+-major: String
+--
++Student(): ctor
++Student(String id, String pwd, String name, String sex, String birthday, String institute, String major): ctor
++getSex(): String
++setSex(String sex): void
++getBirthday(): String
++setBirthday(String birthday): void
++getInstitute(): String
++setInstitute(String institute): void
++getMajor(): String
++setMajor(String major): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>321</x>
+      <y>342</y>
+      <w>201</w>
+      <h>87</h>
+    </coordinates>
+    <panel_attributes>model::Teacher
+--
+-sex: String
+-birthday: String
+-institute: String
+-major: String
+--
++Teacher(): ctor
++Teacher(String id, String pwd, String name, String sex, String birthday, String institute, String major): ctor
++getSex(): String
++setSex(String sex): void
++getBirthday(): String
++setBirthday(String birthday): void
++getInstitute(): String
++setInstitute(String institute): void
++getMajor(): String
++setMajor(String major): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>549</x>
+      <y>342</y>
+      <w>114</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>controller::ChooseCourse
+--
+-serialVersionUID = 1L: long
+~contain: JPanel
+~list: JTextArea
+~chooseCourseId, allCourse: JLabel
+~chooseCourseIdt: JTextField
+~submit, dropOut: JButton
+~id: String
+--
++ChooseCourse(String id): ctor
++hasStudent(String id, String courseId): boolean
++editCurrentNum(String courseId, boolean condition): void
+~addGrade(String courseId, String studentId): void
++actionPerformed(ActionEvent e): void
++processWindowEvent(WindowEvent e): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>675</x>
+      <y>339</y>
+      <w>57</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>controller::GradeInfo
+--
+-serialVersionUID = 1L: long
+~contain: JPanel
+~list: JTextArea
+~id: String
+~courseid: String
+~coursename: String
+~teacherid: String
+~teachername: String
+~studentid: String
+~studentname: String
+~grade: String
+--
++GradeInfo(String id): ctor
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>321</x>
+      <y>435</y>
+      <w>90</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>view::MainFrame
+--
+-serialVersionUID = 1L: long
+~idTextField: JTextField
+~passwdTextField: JPasswordField
+~idLabel, passwdLabel: JLabel
+~choice: Choice
+~login: JButton
+~contain: JPanel
+~count = 0: int
+--
++MainFrame(): ctor
++actionPerformed(ActionEvent e): void
++processWindowEvent(WindowEvent e): void
++main(String[] args): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>426</x>
+      <y>435</y>
+      <w>105</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>controller::AddUser
+--
+~contain: JPanel
+~id, name, birthday, institute, major: JLabel
+~idt, namet, birthdayt, institutet, majort: JTextField
+~check1, check2: Checkbox
+~group: CheckboxGroup
+~submit: JButton
+~chooice: Choice
+~file = System.getProperty("user.dir") + "/data/": String
+--
++AddUser(): ctor
++actionPerformed(ActionEvent e): void
++processWindowEvent(WindowEvent e): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>543</x>
+      <y>432</y>
+      <w>108</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>controller::EditInfo
+--
+~id: String
+~contain: JPanel
+~submit: JButton
+~name, inst, birth, pass1, pass2, major: JLabel
+~namet, instt, birtht, pass1t, pass2t, majort: JTextField
+~check1, check2: Checkbox
+~group: CheckboxGroup
+~flag: int
+--
++EditInfo(String id, int flag): ctor
++actionPerformed(ActionEvent e): void
++processWindowEvent(WindowEvent e): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>663</x>
+      <y>432</y>
+      <w>93</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>/model::User/
+--
+-id: String
+-pwd: String
+-name: String
+--
++User(): ctor
++User(String id, String pwd, String name): ctor
++getId(): String
++setId(String id): void
++getPwd(): String
++setPwd(String pwd): void
++getName(): String
++setName(String name): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>750</x>
+      <y>342</y>
+      <w>147</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>view::ScholarshipDetail
+--
+-serialVersionUID = 1L: long
+~id, name, inst, major, type, reason: String
+~contain: JPanel
+~idLabel, nameLabel, instLabel, majorLabel, typeLabel, reasonLabel: JLabel
+~reasonArea: JTextArea
+~scrollPane: JScrollPane
+~agree, reject: JButton
+~stu: Scholarship
+--
++ScholarshipDetail(String id, String type): ctor
++processWindowEvent(WindowEvent e): void
++actionPerformed(ActionEvent e): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>915</x>
+      <y>339</y>
+      <w>192</w>
+      <h>72</h>
+    </coordinates>
+    <panel_attributes>view::ScholarshipView
+--
+-serialVersionUID = 1L: long
+~idLabel, nameLabel, instLabel, claLabel, majorLabel, courseLabel, sexLabel, overviewLabel: JLabel
+~id, type: String
+~contain: JPanel
+~overviewField: JTextField
+~list: JTextArea
+~scrollPane: JScrollPane
+~overviewButton: JButton
+--
++ScholarshipView(String id, int flag): ctor
++processWindowEvent(WindowEvent e): void
++actionPerformed(ActionEvent e): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>765</x>
+      <y>441</y>
+      <w>147</w>
+      <h>69</h>
+    </coordinates>
+    <panel_attributes>controller::AddCourse
+--
+~contain: JPanel
+~submit: JButton
+~id, name, credit, classH, teacherId, teacherName, maxNum: JLabel
+~idt, namet, creditt, classHt, teacherIdt, teacherNamet, maxNumt: JTextField
+--
++AddCourse(): ctor
++hasCourse(// 教师开课前检查课程是否已经存在&#13;
+String id): // 教师开课前检查课程是否已经存在&#13;
+int
++actionPerformed(ActionEvent e): void
++processWindowEvent(WindowEvent e): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>321</x>
+      <y>519</y>
+      <w>105</w>
+      <h>69</h>
+    </coordinates>
+    <panel_attributes>controller::DeleteCourse
+--
+-serialVersionUID = 1L: long
+~id: String
+~contain: JPanel
+~allCourse, deleteCourseId: JLabel
+~list: JTextArea
+~deleteCourseIdt: JTextField
+~submit: JButton
+--
++DeleteCourse(String id): ctor
++actionPerformed(ActionEvent e): void
+~hasThisCourse(String courseId, String teacherId): int
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>441</x>
+      <y>519</y>
+      <w>105</w>
+      <h>69</h>
+    </coordinates>
+    <panel_attributes>controller::DeleteUser
+--
+-serialVersionUID = 1L: long
+~contain: JPanel
+~id: JLabel
+~idt: JTextField
+~chooice: Choice
+~submit: JButton
+~file = System.getProperty("user.dir") + "/data/": String
+--
++DeleteUser(): ctor
++actionPerformed(ActionEvent e): void
++processWindowEvent(WindowEvent e): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>570</x>
+      <y>519</y>
+      <w>90</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>controller::EditScholarship
+--
+~id, idt: String
+~contain: JPanel
+~submit: JButton
+~name, inst, major, reason, type: JLabel
+~namet, instt, majort, typet: JTextField
+~reasont: JTextArea
+--
++EditScholarship(String id): ctor
++actionPerformed(ActionEvent e): void
++processWindowEvent(WindowEvent e): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>672</x>
+      <y>519</y>
+      <w>144</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>controller::Info
+--
+-serialVersionUID = 1L: long
+~idLabel, nameLabel, genderLabel, birLabel, insLabel, majorLabel: JLabel
+~id, name, pwd, gender, birthday, institute, major: String
+~stuInfoJPanel: JPanel
+~stu: Student
+~t: Teacher
+~ad: Administrator
+--
++Info(String id, int flag): ctor
++processWindowEvent(WindowEvent e): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>828</x>
+      <y>519</y>
+      <w>243</w>
+      <h>63</h>
+    </coordinates>
+    <panel_attributes>controller::LeaveManagement
+--
+-serialVersionUID = 1L: long
+-idFieldt, startYeart, startMoutht, startDayt, endYeart, endMoutht, endDayt: JTextField
+-reasonArea: JTextArea
+-addButton: JButton
+-panel: JPanel
+-nameLabel, startDateLabel, startYear, startMouth, startDay, endDateLabel, reasonLabel, endYear, endMouth, endDay: JLabel
+--
++LeaveManagement(): ctor
++actionPerformed(ActionEvent e): void
+~hasStudent(String studentId): int
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>930</x>
+      <y>444</y>
+      <w>78</w>
+      <h>57</h>
+    </coordinates>
+    <panel_attributes>view::SortGradeFrame
+--
+~contain: JPanel
+~id, pass, good, excellent: JLabel
+~idt, passt, goodt, excellentt: JTextField
+~submit, bn: JButton
+~result = null: int[]
+--
++SortGradeFrame(): ctor
++actionPerformed(ActionEvent e): void
+~showResult(): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1026</x>
+      <y>444</y>
+      <w>57</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>controller::CheckLeave
+--
+-serialVersionUID = 1L: long
+~contain: JPanel
+~list: JTextArea
+~allCourse: JLabel
+~chooseCourseIdt: JTextField
+~id: String
+--
++CheckLeave(String id): ctor
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>435</x>
+      <y>594</y>
+      <w>138</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>controller::GradeSort
+--
+~courseId: String
+~pass, good, excellent: float
+~course: Course
+--
++GradeSort(String courseId, float pass, float good, float excellent): ctor
++hasCourse(): int
++sortGrade(): int[]
++isValidate(): int
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>579</x>
+      <y>597</y>
+      <w>99</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>view::AdministratorPanel
+--
+~deleteUser, addUser, selfInfo, infoButton: JButton
+~contain: JPanel
+~idd: String
+--
++AdministratorPanel(String idd): ctor
++actionPerformed(ActionEvent e): void
++processWindowEvent(WindowEvent e): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>690</x>
+      <y>594</y>
+      <w>315</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>view::StudentsPanel
+--
+~contain: JPanel
+~id: String
+~infoButton, gradeButton, courseButton, editButton, courseChooseButton, examButton, checkLeaveButton, checkScholarshipButton, applyScholarShipButton: JButton
+--
++StudentsPanel(String id): ctor
++actionPerformed(ActionEvent e): void
++processWindowEvent(WindowEvent e): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1023</x>
+      <y>591</y>
+      <w>312</w>
+      <h>48</h>
+    </coordinates>
+    <panel_attributes>view::TeachersPanel
+--
+~idd: String
+~contain: JPanel
+~infoButton, gradeButton, courseButton, editButton, addCourseButton, deleteCourseButton, sortGrade, examButton, leaveManageButton, scholarshipButton: JButton
+--
++TeachersPanel(String idd): ctor
++actionPerformed(ActionEvent e): void
++processWindowEvent(WindowEvent e): void
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1080</x>
+      <y>528</y>
+      <w>72</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>controller::CourseView
+--
+~contain: JPanel
+~list: JTextArea
+--
++CourseView(String id, int flag): ctor
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>324</x>
+      <y>597</y>
+      <w>105</w>
+      <h>21</h>
+    </coordinates>
+    <panel_attributes>controller::CheckInfo
+--
+--
++isMember(String table, String id, String passwd): int
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

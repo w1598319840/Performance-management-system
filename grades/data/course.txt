@@ -1,0 +1,8 @@
+1 C语言 4 48 a Siri 180 1
+2 C++ 3 36 a Siri 90 0
+3 Java 6 64 a Siri 60 0
+4 Python 1 16 a Siri 120 0
+5 C# 6 64 t Tom 150 0
+6 软件工程 4 48 t Tom 80 0
+7 概率论 5 56 t Tom 180 0
+8 计算机组成原理 4 48 t Tom 100 1

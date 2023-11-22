@@ -25,9 +25,9 @@ import javax.swing.JTextField;
 @SuppressWarnings("serial")
 public class ExamEnter extends JFrame implements ActionListener {
 	/*
-	 * ½ÌÊ¦µÇÂ½¿¼ÊÔĞÅÏ¢
+	 * æ•™å¸ˆç™»é™†è€ƒè¯•ä¿¡æ¯
 	 */
-	String idd; // ½ÌÊ¦ºÅ
+	String idd; // æ•™å¸ˆå·
 	JPanel contain;
 	JLabel id;
 	JTextField idt, stuIdt, stuNamet, examNamet, examTimet, examAreat;
@@ -38,16 +38,16 @@ public class ExamEnter extends JFrame implements ActionListener {
 	ArrayList<String> modifiedContent = new ArrayList<String>();
 
 	public ExamEnter(String idd) {
-		super("²é¿´");
+		super("æŸ¥çœ‹");
 		this.idd = idd;
 		setSize(300, 300);
 		setLocation(600, 400);
 		contain = new JPanel();
 		contain.setLayout(null);
 		add(contain);
-		id = new JLabel("¿Î³ÌºÅ");
+		id = new JLabel("è¯¾ç¨‹å·");
 		idt = new JTextField();
-		submit = new JButton("Ìá½»");
+		submit = new JButton("æäº¤");
 		id.setBounds(38, 50, 75, 35);
 		idt.setBounds(80, 50, 150, 35);
 		submit.setBounds(102, 125, 70, 30);
@@ -62,17 +62,17 @@ public class ExamEnter extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == submit) {
 			if (hasThisCourse(idt.getText()) == 1) {
-				enter(); // ½øÈë¿¼ÊÔĞÅÏ¢ÊäÈë½çÃæ
+				enter(); // è¿›å…¥è€ƒè¯•ä¿¡æ¯è¾“å…¥ç•Œé¢
 			} else {
-				JOptionPane.showMessageDialog(null, "ÄúÎ´¿ªÉè´Ë¿Î³Ì£¡", "ÌáÊ¾", JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(null, "æ‚¨æœªå¼€è®¾æ­¤è¯¾ç¨‹ï¼", "æç¤º", JOptionPane.INFORMATION_MESSAGE);
 			}
 		} else if (e.getSource() == bn) {
-			if (hasThisStu() == 1) { // ÉèÖÃ¿¼ÊÔÄÚÈİ
+			if (hasThisStu() == 1) { // è®¾ç½®è€ƒè¯•å†…å®¹
 				String path = System.getProperty("user.dir") + "/data/exam" + "/" + examNamet.getText() + ".txt";
-				ArrayList<String> tempContent = new ArrayList<>(); // ´´½¨ÁÙÊ±ÄÚÈİÁĞ±í
+				ArrayList<String> tempContent = new ArrayList<>(); // åˆ›å»ºä¸´æ—¶å†…å®¹åˆ—è¡¨
 				String path1 = System.getProperty("user.dir") + "/data/teacher.txt";
 
-				// ¼ì²éÎÄ¼şÊÇ·ñÎª¿Õ
+				// æ£€æŸ¥æ–‡ä»¶æ˜¯å¦ä¸ºç©º
 				boolean isFileEmpty = false;
 				try (BufferedReader br = new BufferedReader(new FileReader(path))) {
 
@@ -83,61 +83,61 @@ public class ExamEnter extends JFrame implements ActionListener {
 					ee.printStackTrace();
 				}
 
-				// Èç¹ûÎÄ¼şÎª¿Õ£¬Ö±½ÓĞ´ÈëÄÚÈİ
+				// å¦‚æœæ–‡ä»¶ä¸ºç©ºï¼Œç›´æ¥å†™å…¥å†…å®¹
 				if (isFileEmpty) {
-					try (BufferedWriter writer = new BufferedWriter(new FileWriter(path));
+					try (BufferedWriter writer = new BufferedWriter(new FileWriter(pathï¼Œtrue));
 							BufferedReader br = new BufferedReader(new FileReader(path1))) {
 
 						String t = null;
 						String[] result = null;
-						while ((t = br.readLine()) != null) {// Ê¹ÓÃreadLine·½·¨£¬¶ÔÒ»¸öÎÄ¼şÒ»´Î¶ÁÒ»ĞĞ
+						while ((t = br.readLine()) != null) {// ä½¿ç”¨readLineæ–¹æ³•ï¼Œå¯¹ä¸€ä¸ªæ–‡ä»¶ä¸€æ¬¡è¯»ä¸€è¡Œ
 							result = t.split(" ");
 						}
-						// Ğ´ÈëĞÂµÄÄÚÈİ
+						// å†™å…¥æ–°çš„å†…å®¹
 						String newExamInfo = idt.getText() + " " + examNamet.getText() + " " + result[0] + " "
 								+ result[2] + " " + stuIdt.getText() + " " + stuNamet.getText() + " "
 								+ examNamet.getText() + " " + examTimet.getText() + " " + examAreat.getText();
 						writer.write(newExamInfo);
-						writer.newLine(); // Ìí¼Ó»»ĞĞ·û
-						JOptionPane.showMessageDialog(null, "¿¼ÊÔĞÅÏ¢µÇÂ¼³É¹¦£¡", "ÌáÊ¾", JOptionPane.INFORMATION_MESSAGE);
+						writer.newLine(); // æ·»åŠ æ¢è¡Œç¬¦
+						JOptionPane.showMessageDialog(null, "è€ƒè¯•ä¿¡æ¯ç™»å½•æˆåŠŸï¼", "æç¤º", JOptionPane.INFORMATION_MESSAGE);
 					} catch (IOException e1) {
 						System.err.println("Error writing to the file: " + e1.getMessage());
 					}
-					return; // ÍË³ö·½·¨
+					return; // é€€å‡ºæ–¹æ³•
 				}
 
-				// Èç¹ûÎÄ¼ş²»Îª¿Õ£¬ĞŞ¸ÄÄÚÈİ²¢¸²¸Ç
+				// å¦‚æœæ–‡ä»¶ä¸ä¸ºç©ºï¼Œä¿®æ”¹å†…å®¹å¹¶è¦†ç›–
 				try (BufferedReader br = new BufferedReader(new FileReader(path))) {
 					String s;
 					while ((s = br.readLine()) != null) {
 						String[] result = s.split(" ");
 						if (result[0].equals(idt.getText())) {
-							// ĞŞ¸ÄÌØ¶¨µÄÄÚÈİ
+							// ä¿®æ”¹ç‰¹å®šçš„å†…å®¹
 							String newExamInfo = idt.getText() + " " + result[1] + " " + result[2] + " " + result[3]
 									+ " " + stuIdt.getText() + " " + stuNamet.getText() + " " + examNamet.getText()
 									+ " " + examTimet.getText() + " " + examAreat.getText();
-							// ½«ĞŞ¸ÄºóµÄÄÚÈİ´æ´¢ÔÚÁÙÊ±ÁĞ±íÖĞ
+							// å°†ä¿®æ”¹åçš„å†…å®¹å­˜å‚¨åœ¨ä¸´æ—¶åˆ—è¡¨ä¸­
 							tempContent.add(newExamInfo);
 						} else {
-							tempContent.add(s); // ½«Î´ĞŞ¸ÄµÄÄÚÈİÌí¼Óµ½ÁÙÊ±ÁĞ±íÖĞ
+							tempContent.add(s); // å°†æœªä¿®æ”¹çš„å†…å®¹æ·»åŠ åˆ°ä¸´æ—¶åˆ—è¡¨ä¸­
 						}
 					}
 				} catch (IOException ee) {
 					ee.printStackTrace();
 				}
 
-				// ĞŞ¸ÄÄÚÈİºó£¬½«ÆäÖØĞÂĞ´ÈëÎÄ¼ş
+				// ä¿®æ”¹å†…å®¹åï¼Œå°†å…¶é‡æ–°å†™å…¥æ–‡ä»¶
 				try (BufferedWriter writer = new BufferedWriter(new FileWriter(path))) {
 					for (String line : tempContent) {
 						writer.write(line);
-						writer.newLine(); // Ã¿ĞĞºóÌí¼Ó»»ĞĞ·û
+						writer.newLine(); // æ¯è¡Œåæ·»åŠ æ¢è¡Œç¬¦
 					}
-					JOptionPane.showMessageDialog(null, "¿¼ÊÔĞÅÏ¢µÇÂ¼³É¹¦£¡", "ÌáÊ¾", JOptionPane.INFORMATION_MESSAGE);
+					JOptionPane.showMessageDialog(null, "è€ƒè¯•ä¿¡æ¯ç™»å½•æˆåŠŸï¼", "æç¤º", JOptionPane.INFORMATION_MESSAGE);
 				} catch (IOException e1) {
 					System.err.println("Error writing to the file: " + e1.getMessage());
 				}
 			} else {
-				JOptionPane.showMessageDialog(null, "¿Î³ÌºÅÎª" + idt.getText() + "ÎŞ´ËÑ§Éú", "ÌáÊ¾",
+				JOptionPane.showMessageDialog(null, "è¯¾ç¨‹å·ä¸º" + idt.getText() + "æ— æ­¤å­¦ç”Ÿ", "æç¤º",
 						JOptionPane.INFORMATION_MESSAGE);
 			}
 		}else if(e.getSource() == overview) {
@@ -153,18 +153,18 @@ public class ExamEnter extends JFrame implements ActionListener {
 		String path = System.getProperty("user.dir") + "/data/course_student";
 		// String path = "D://test//course_student";
 
-		List<String> files = new ArrayList<String>(); // Ä¿Â¼ÏÂËùÓĞÎÄ¼ş
+		List<String> files = new ArrayList<String>(); // ç›®å½•ä¸‹æ‰€æœ‰æ–‡ä»¶
 		File file = new File(path);
 		File[] tempList = file.listFiles();
 
 		for (int i = 0; i < tempList.length; i++) {
 			if (tempList[i].isFile()) {
 				files.add(tempList[i].toString());
-				// ÎÄ¼şÃû£¬²»°üº¬Â·¾¶
+				// æ–‡ä»¶åï¼Œä¸åŒ…å«è·¯å¾„
 				// String fileName = tempList[i].getName();
 			}
 			if (tempList[i].isDirectory()) {
-				// ÕâÀï¾Í²»µİ¹éÁË£¬
+				// è¿™é‡Œå°±ä¸é€’å½’äº†ï¼Œ
 			}
 		}
 
@@ -172,7 +172,7 @@ public class ExamEnter extends JFrame implements ActionListener {
 			for (int i = 0; i < files.size(); i++) {
 				try (BufferedReader br = new BufferedReader(new FileReader(files.get(i)))) {
 					String s = null;
-					while ((s = br.readLine()) != null) {// Ê¹ÓÃreadLine·½·¨£¬Ò»´Î¶ÁÒ»ĞĞ
+					while ((s = br.readLine()) != null) {// ä½¿ç”¨readLineæ–¹æ³•ï¼Œä¸€æ¬¡è¯»ä¸€è¡Œ
 						String[] result = s.split(" ");
 						if (result[0].equals(idt.getText()) && result[2].equals(stuIdt.getText())) {
 							return 1;
@@ -188,18 +188,18 @@ public class ExamEnter extends JFrame implements ActionListener {
 	}
 
 	void enter() {
-		JFrame fm = new JFrame("µÇÂ¼¿¼ÊÔĞÅÏ¢");
+		JFrame fm = new JFrame("ç™»å½•è€ƒè¯•ä¿¡æ¯");
 		fm.setSize(300, 460);
 		JPanel contain = new JPanel();
 		fm.setLocation(600, 400);
 		contain.setLayout(null);
-		bn = new JButton("Ìá½»");
-		overview = new JButton("²é¿´±¾ÃÅ¿Î³ÌËùÓĞÑ§Éú");
-		JLabel stuId = new JLabel("Ñ§ºÅ");
-		JLabel examName = new JLabel("¿ÆÄ¿");
-		JLabel examTime = new JLabel("Ê±¼ä");
-		JLabel examArea = new JLabel("µØµã");
-		JLabel stuName = new JLabel("ĞÕÃû");
+		bn = new JButton("æäº¤");
+		overview = new JButton("æŸ¥çœ‹æœ¬é—¨è¯¾ç¨‹æ‰€æœ‰å­¦ç”Ÿ");
+		JLabel stuId = new JLabel("å­¦å·");
+		JLabel examName = new JLabel("ç§‘ç›®");
+		JLabel examTime = new JLabel("æ—¶é—´");
+		JLabel examArea = new JLabel("åœ°ç‚¹");
+		JLabel stuName = new JLabel("å§“å");
 
 		stuIdt = new JTextField();
 		examNamet = new JTextField();
@@ -250,7 +250,7 @@ public class ExamEnter extends JFrame implements ActionListener {
 		// String file = "D://test//course.txt";
 		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
 			String s = null;
-			while ((s = br.readLine()) != null) {// Ê¹ÓÃreadLine·½·¨£¬Ò»´Î¶ÁÒ»ĞĞ
+			while ((s = br.readLine()) != null) {// ä½¿ç”¨readLineæ–¹æ³•ï¼Œä¸€æ¬¡è¯»ä¸€è¡Œ
 				String[] result = s.split(" ");
 				if (result[0].equals(idd) && result[4].equals(this.idd)) {
 					return 1;
@@ -259,11 +259,11 @@ public class ExamEnter extends JFrame implements ActionListener {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return 0; // Èç¹ûÃ»ÓĞÕÒµ½Æ¥ÅäÏî£¬·µ»Ø0
+		return 0; // å¦‚æœæ²¡æœ‰æ‰¾åˆ°åŒ¹é…é¡¹ï¼Œè¿”å›0
 	}
 
-	void allStudent(String courseId) {// »ñÈ¡±¾ÃÅ¿Î³ÌµÄËùÓĞÑ§ÉúĞÅÏ¢
-		JFrame newFrame = new JFrame("±¾¿Î³ÌËùÓĞÑ§Éú");
+	void allStudent(String courseId) {// è·å–æœ¬é—¨è¯¾ç¨‹çš„æ‰€æœ‰å­¦ç”Ÿä¿¡æ¯
+		JFrame newFrame = new JFrame("æœ¬è¯¾ç¨‹æ‰€æœ‰å­¦ç”Ÿ");
 		newFrame.setBounds(200, 300, 460, 300);
 		JPanel contain = new JPanel();
 		contain.setLayout(null);
@@ -276,21 +276,21 @@ public class ExamEnter extends JFrame implements ActionListener {
 		listPane.setViewportView(list);
 		listPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		contain.add(listPane);
-		list.append("¿Î³Ì±àºÅ\t¿Î³ÌÃû³Æ\t\tÑ§ÉúÑ§ºÅ\tÑ§ÉúĞÕÃû\n");
+		list.append("è¯¾ç¨‹ç¼–å·\tè¯¾ç¨‹åç§°\t\tå­¦ç”Ÿå­¦å·\tå­¦ç”Ÿå§“å\n");
 
 		String path = System.getProperty("user.dir") + "/data/course_student";
-		List<String> files = new ArrayList<String>();// »ñÈ¡Ä¿Â¼ÏÂËùÓĞÎÄ¼ş
-		File file = new File(path);// ÖÁcourse_studentÎÄ¼ş¼Ğ
-		File[] tempList = file.listFiles();// Õâ¸öÊı×éÖĞÓĞ¸ÃÄ¿Â¼ÏÂËùÓĞÎÄ¼ş
+		List<String> files = new ArrayList<String>();// è·å–ç›®å½•ä¸‹æ‰€æœ‰æ–‡ä»¶
+		File file = new File(path);// è‡³course_studentæ–‡ä»¶å¤¹
+		File[] tempList = file.listFiles();// è¿™ä¸ªæ•°ç»„ä¸­æœ‰è¯¥ç›®å½•ä¸‹æ‰€æœ‰æ–‡ä»¶
 		for (int i = 0; i < tempList.length; i++) {
 			if (tempList[i].isFile()) {
 				files.add(tempList[i].toString());
-				// ÎÄ¼şÃû£¬²»°üº¬Â·¾¶
+				// æ–‡ä»¶åï¼Œä¸åŒ…å«è·¯å¾„
 			}
 			if (tempList[i].isDirectory()) {
-				// ÕâÀï¾Í²»µİ¹éÁË£¬
+				// è¿™é‡Œå°±ä¸é€’å½’äº†ï¼Œ
 			}
-		} // forÑ­»·ºó£¬files¶¯Ì¬Êı×éÖĞ¾Í°üÀ¨ÁËËùÓĞµÄÎÄ¼şÂ·¾¶
+		} // forå¾ªç¯åï¼ŒfilesåŠ¨æ€æ•°ç»„ä¸­å°±åŒ…æ‹¬äº†æ‰€æœ‰çš„æ–‡ä»¶è·¯å¾„
 		BufferedReader br = null;
 		try {
 			for (int i = 0; i < files.size(); i++) {
@@ -298,8 +298,8 @@ public class ExamEnter extends JFrame implements ActionListener {
 				String s = null;
 				while ((s = br.readLine()) != null) {
 					String[] result = s.split(" ");
-					if (result[0].equals(courseId)) {// ÕÒµ½ÁËÕâÃÅ¿Î³Ì
-						// °ÑËùÓĞÑ§ÉúÕ¹Ê¾³öÀ´
+					if (result[0].equals(courseId)) {// æ‰¾åˆ°äº†è¿™é—¨è¯¾ç¨‹
+						// æŠŠæ‰€æœ‰å­¦ç”Ÿå±•ç¤ºå‡ºæ¥
 						list.append("      " + courseId + "\t");
 						int stringLength = 0;
 						for (int i1 = 0; i1 < result[1].length(); i1++) {
